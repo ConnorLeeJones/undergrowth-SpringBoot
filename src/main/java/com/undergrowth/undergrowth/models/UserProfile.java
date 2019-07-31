@@ -1,6 +1,7 @@
 package com.undergrowth.undergrowth.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 public class UserProfile {
@@ -11,11 +12,11 @@ public class UserProfile {
     private String description;
     private String zipcode;
     private String links;
-    @Enumerated(EnumType.STRING)
-    private ProfileType profileType;
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private User user;
+    @Email
+    private String email;
 
     public UserProfile(){}
 
@@ -52,14 +53,6 @@ public class UserProfile {
         this.links = links;
     }
 
-    public ProfileType getProfileType() {
-        return profileType;
-    }
-
-    public void setProfileType(ProfileType profileType) {
-        this.profileType = profileType;
-    }
-
     public User getUser() {
         return user;
     }
@@ -67,4 +60,8 @@ public class UserProfile {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) { this.email = email; }
 }

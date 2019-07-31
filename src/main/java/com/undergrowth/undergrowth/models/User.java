@@ -1,7 +1,6 @@
 package com.undergrowth.undergrowth.models;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 
 @Entity
 public class User {
@@ -13,14 +12,20 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    @Email
-    private String email;
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private UserProfile userProfile;
 
 
 
-    private User(){}
+    public User(){}
+
+    public User(String username, String password, String firstName, String lastName, UserProfile userProfile) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userProfile = userProfile;
+    }
 
 
     public Long getId() {
@@ -45,15 +50,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
 
