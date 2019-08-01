@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping(value ="/users")
+@CrossOrigin
 public class UserController {
 
     private UserService service;
@@ -19,20 +20,25 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping(value = "/users/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
         return new ResponseEntity<>(service.findUserById(id), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/users")
+    @GetMapping
     public ResponseEntity<Iterable<User>> getUsers() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
-
-    @PostMapping(value = "/users")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        return new ResponseEntity<>(service.create(user), HttpStatus.CREATED);
+        try {
+            return new ResponseEntity<>(service.create(user), HttpStatus.CREATED);
+        } catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
     }
 
 
