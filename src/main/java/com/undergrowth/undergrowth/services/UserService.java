@@ -27,6 +27,7 @@ public class UserService {
     }
 
     public User create(User user){
+        //User newUser = new User(user.getUsername(), user.getPassword(), user.getFirstName(), user.getLastName());
         return repository.save(user);
     }
 
