@@ -29,7 +29,6 @@ public class UserService {
     public User findUserByUsername(String username){return repository.findUserByUsername(username);}
 
     public User create(User user){
-        //User newUser = new User(user.getUsername(), user.getPassword(), user.getFirstName(), user.getLastName());
         return repository.save(user);
     }
 
