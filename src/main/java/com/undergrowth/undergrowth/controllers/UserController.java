@@ -30,7 +30,6 @@ public class UserController {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
         try {
@@ -38,7 +37,19 @@ public class UserController {
         } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
+    }
 
+    @PutMapping(value = "/login")
+    public ResponseEntity<User> login(@RequestBody User user) {
+        try {
+            User tempUser = service.findUserByUsername(user.getUsername());
+            if (user.getPassword().equals(tempUser.getPassword())) {
+                return new ResponseEntity<>(tempUser, HttpStatus.OK);
+            }
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
 
