@@ -36,7 +36,7 @@ public class UserProfileService {
         ogProfile.setLinks(profile.getLinks());
         ogProfile.setType(profile.getType());
         ogProfile.setZipcode(profile.getZipcode());
-        return repository.save(profile);
+        return repository.save(ogProfile);
     }
 
 
