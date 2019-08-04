@@ -5,7 +5,6 @@ public enum ProfileType {
     MUSICIAN,
     BAND,
     APPRECIATOR,
+    PHOTOGRAPHER,
     OTHER
-
-
 }
