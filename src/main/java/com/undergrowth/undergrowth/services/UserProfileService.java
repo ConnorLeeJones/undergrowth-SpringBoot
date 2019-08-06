@@ -39,5 +39,14 @@ public class UserProfileService {
         return repository.save(ogProfile);
     }
 
+    public Iterable<UserProfile> findUserProfilesByType(String type){
+        return repository.findUserProfilesByType(type);
+    }
+
+//    public Iterable<UserProfile> findUserProfilesByTypeAndZipcode(String type, String zipcode){
+//        return repository.findUserProfilesByTypeAAndZipcode(type, zipcode);
+//    }
+
+
 
 }
