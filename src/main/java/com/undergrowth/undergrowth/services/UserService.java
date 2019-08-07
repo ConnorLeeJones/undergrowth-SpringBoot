@@ -36,9 +36,11 @@ public class UserService {
         User newUser = repository.save(user);
         this.userProfileService.create(new UserProfile());
         return newUser;
-
-
-
     }
+//
+//    public Iterable<User> findAllUsersByProfileType(String type){
+//
+//    }
+
 
 }

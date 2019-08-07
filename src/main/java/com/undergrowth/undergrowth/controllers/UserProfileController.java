@@ -41,6 +41,7 @@ public class UserProfileController {
         return new ResponseEntity<>(service.findUserProfilesByType(type), HttpStatus.OK);
     }
 
+
 //    @PutMapping(value = "/local/{type}")
 //    public ResponseEntity<Iterable<UserProfile>> getLocalUserProfileByType(@PathVariable("type") String type, @RequestBody UserProfile profile) {
 //        return new ResponseEntity<>(service.findUserProfilesByTypeAndZipcode(type, profile.getZipcode()), HttpStatus.OK);

@@ -55,6 +55,18 @@ public class UserController {
     }
 
 
+    @GetMapping(value = "/all/{type}")
+    public ResponseEntity<Iterable<User>> getUsersByProfileType(@PathVariable("type") String type) {
+        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
+    }
+
+//    @GetMapping(value = "/all/{type}")
+//    public ResponseEntity<Iterable<UserProfile>> getUserProfileByType(@PathVariable("type") String type) {
+//        return new ResponseEntity<>(service.findUserProfilesByType(type), HttpStatus.OK);
+//    }
+
+
+
 
 
 }
