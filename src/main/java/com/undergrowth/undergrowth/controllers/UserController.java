@@ -5,6 +5,7 @@ import com.undergrowth.undergrowth.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private UserService service;
+//    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserController(UserService service){
@@ -51,6 +53,18 @@ public class UserController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
+
+
+    @GetMapping(value = "/all/{type}")
+    public ResponseEntity<Iterable<User>> getUsersByProfileType(@PathVariable("type") String type) {
+        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
+    }
+
+//    @GetMapping(value = "/all/{type}")
+//    public ResponseEntity<Iterable<UserProfile>> getUserProfileByType(@PathVariable("type") String type) {
+//        return new ResponseEntity<>(service.findUserProfilesByType(type), HttpStatus.OK);
+//    }
+
 
 
 

@@ -35,4 +35,15 @@ public class UserProfileController {
     public ResponseEntity<UserProfile> updateUserProfile(@PathVariable Long id, @RequestBody UserProfile profile) {
         return new ResponseEntity<>(service.update(id, profile), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/all/{type}")
+    public ResponseEntity<Iterable<UserProfile>> getUserProfileByType(@PathVariable("type") String type) {
+        return new ResponseEntity<>(service.findUserProfilesByType(type), HttpStatus.OK);
+    }
+
+
+    @PutMapping(value = "/local/{type}")
+    public ResponseEntity<Iterable<UserProfile>> getLocalUserProfileByType(@PathVariable("type") String type, @RequestBody UserProfile profile) {
+        return new ResponseEntity<>(service.findUserProfilesByTypeAndZipcode(type, profile.getZipcode()), HttpStatus.OK);
+    }
 }
