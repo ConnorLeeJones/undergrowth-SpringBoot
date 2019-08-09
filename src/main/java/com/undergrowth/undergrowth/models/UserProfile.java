@@ -1,5 +1,6 @@
 package com.undergrowth.undergrowth.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -14,13 +15,14 @@ public class UserProfile {
     private String description;
     private String zipcode;
     private String links;
-    @JsonIgnore
+    @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id", nullable = false)
     private User user;
     @Email
     private String email;
     private String type;
+    private String userFullName;
 
     public UserProfile(){}
 
@@ -80,4 +82,13 @@ public class UserProfile {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getUserFullName() {
+        return userFullName;
+    }
+
+    public void setUserFullName(String userFullName) {
+        this.userFullName = userFullName;
+    }
+
 }

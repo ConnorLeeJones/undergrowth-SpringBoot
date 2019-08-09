@@ -17,9 +17,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
     //Iterable<User> findAllUsersByProfileType(String type);
 
 //    @Query("SELECT u FROM User u WHERE u.status = ?1")
-//    @Query("SELECT u.id, u.first_name, u.last_name, up.type, up.zipcode FROM user u INNER JOIN user_profile up ON u.id=up.id WHERE up.type=? AND up.zipcode=?")
-//    Iterable<User> findUserByProfileTypeAndZipcode(Integer status);
-//
+//    @Query("SELECT u.id, u.first_name, u.last_name, up.type, up.zipcode FROM user u INNER JOIN user_profile up ON u.id=up.id WHERE up.type=?1 AND up.zipcode=?2")
+//    Iterable<User> findUserByProfileTypeAndZipcode(String type, String zipcode);
+////
 //
 
 }

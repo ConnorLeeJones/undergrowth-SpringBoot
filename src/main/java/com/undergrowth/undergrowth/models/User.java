@@ -1,5 +1,7 @@
 package com.undergrowth.undergrowth.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
+    @JsonManagedReference
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
     private UserProfile userProfile;
 

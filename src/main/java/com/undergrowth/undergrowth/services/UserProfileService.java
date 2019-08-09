@@ -36,6 +36,7 @@ public class UserProfileService {
         ogProfile.setLinks(profile.getLinks());
         ogProfile.setType(profile.getType());
         ogProfile.setZipcode(profile.getZipcode());
+        ogProfile.setUserFullName(ogProfile.getUser().getFirstName() + " " + ogProfile.getUser().getLastName());
         return repository.save(ogProfile);
     }
 
@@ -43,9 +44,9 @@ public class UserProfileService {
         return repository.findUserProfilesByType(type);
     }
 
-//    public Iterable<UserProfile> findUserProfilesByTypeAndZipcode(String type, String zipcode){
-//        return repository.findUserProfilesByTypeAAndZipcode(type, zipcode);
-//    }
+    public Iterable<UserProfile> findUserProfilesByTypeAndZipcode(String type, String zipcode){
+        return repository.findUserProfilesByTypeAndZipcode(type, zipcode);
+    }
 
 
 
