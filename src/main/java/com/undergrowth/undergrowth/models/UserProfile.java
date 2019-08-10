@@ -1,7 +1,6 @@
 package com.undergrowth.undergrowth.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -25,10 +24,6 @@ public class UserProfile {
     private String userFullName;
 
     public UserProfile(){}
-
-//    public UserProfile(Long id){
-//        this.id = id;
-//    }
 
 
     public Long getId() {

@@ -44,12 +44,8 @@ public class UserController {
     @PutMapping(value = "/login")
     public ResponseEntity<User> login(@RequestBody User user) {
         try {
-            User tempUser = service.findUserByUsername(user.getUsername());
-            if (user.getPassword().equals(tempUser.getPassword())) {
-                return new ResponseEntity<>(tempUser, HttpStatus.OK);
-            }
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        } catch (Exception e) {
+            return new ResponseEntity<>(service.login(user), HttpStatus.CREATED);
+        } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
@@ -59,11 +55,6 @@ public class UserController {
     public ResponseEntity<Iterable<User>> getUsersByProfileType(@PathVariable("type") String type) {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
-
-//    @GetMapping(value = "/all/{type}")
-//    public ResponseEntity<Iterable<UserProfile>> getUserProfileByType(@PathVariable("type") String type) {
-//        return new ResponseEntity<>(service.findUserProfilesByType(type), HttpStatus.OK);
-//    }
 
 
 
